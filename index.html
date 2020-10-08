@@ -5,10 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!--Define style in css for images-->
     <style>
         .img-container {
           text-align: center;
           display: block;
+        }
+        .card-img-top {
+          width: 100%;
+          height: 15vw;
+          object-fit: cover;
         }
       </style>
     <title>About Me</title>
@@ -23,6 +29,12 @@
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href=projects.html>Projects</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href=login.html>Sign Up Modal</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href=tic-tac-toe.html>Tic-Tac-Toe Game</a>
                   </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -88,23 +100,45 @@
             </div>
         </div>
     </div>
+    <!--Adding javascript for the button-->
+    <script>
+      var counter = 1;
+      var newIdentityAdd = "addButton" + counter;
+      var newIdentityDelete = "deleteButton" + counter;
+      function deleteCard(deleteID, buttonID){
+        document.getElementById(deleteID).outerHTML = "";
+        document.getElementById(buttonID).outerHTML = "";
+        counter--;
+      }
+    
+      function addCard(identification){
+        counter++;
+        document.getElementById(identification).innerHTML += 
+        '<div class="card" id='+newIdentityAdd+'><div class="card-text">This is a test tweet</div></div>'
+        document.getElementById(identification).innerHTML += 
+        '<button id='+newIdentityDelete+' onclick="deleteCard(newIdentityAdd, newIdentityDelete)">Click to delete</button>' // onclick="deleteCard('addbutton' + instance)"
+      }
+    </script>
     <div class="card-group">
-        <div class="card">
-          <img class="card-img-top" src="https://www.simantel.com/wp-content/uploads/2018/05/thumbs_technical_storytelling.jpg" alt="An image of book with various applications of storytelling above it" style="width:369px;height:250px;">
+        <div class="card" id="interest1">
+          <img class="card-img-top" src="https://www.simantel.com/wp-content/uploads/2018/05/thumbs_technical_storytelling.jpg" alt="An image of book with various applications of storytelling above it"> <!--style="width:369px;height:250px;"-->
+          <button id="addButton" class="btn btn-primary btn-xs" onclick="addCard('interest1')">Click to add a Tweet</button> <!--Alternate class: w3-button w3-circle w3-teal-->
           <div class="card-body">
             <h5 class="card-title">Storytelling</h5>
             <p class="card-text">I believe storytelling changes the world through connecting and uniting people, teaching different truths, and remaining relevent. I am fascinated by how stories are told across different media.</p>
           </div>
         </div>
-        <div class="card">
-          <img class="card-img-top" src="https://d13ezvd6yrslxm.cloudfront.net/wp/wp-content/images/Christopher-Nolan-Interstellar-IMAX.jpg" alt="Christopher Nolan next to an Imax camera" style="width:369px;height:250px;">
+        <div class="card" id="interest2">
+          <img class="card-img-top" src="https://d13ezvd6yrslxm.cloudfront.net/wp/wp-content/images/Christopher-Nolan-Interstellar-IMAX.jpg" alt="Christopher Nolan next to an Imax camera"> <!--style="width:369px;height:250px;"-->
+          <button id="addButton" class="btn btn-primary btn-xs" onclick="addCard('interest2')">Click to add a Tweet</button> <!--Alternate class: w3-button w3-circle w3-teal-->
           <div class="card-body">
             <h5 class="card-title">Movies and films</h5>
             <p class="card-text">I love movies, films, and filmmaking because I love the process of storytelling and the creativity that allows such a visual medium to flourish. I love studying films and seeing how they work.</p>
           </div>
         </div>
-        <div class="card">
-          <img class="card-img-top" src="https://www.gannett-cdn.com/presto/2020/06/12/USAT/78469815-eccf-4a0b-9cb3-33b25131c515-TLOUPII_Review_Screenshot_06.jpg" alt="An image from The Last of Us: Part 2 - my favorite video game" style="width:369px;height:250px;">
+        <div class="card" id="interest3">
+          <img class="card-img-top" src="https://www.gannett-cdn.com/presto/2020/06/12/USAT/78469815-eccf-4a0b-9cb3-33b25131c515-TLOUPII_Review_Screenshot_06.jpg" alt="An image from The Last of Us: Part 2 - my favorite video game"> <!--style="width:369px;height:250px;"-->
+          <button id="addButton" class="btn btn-primary btn-xs" onclick="addCard('interest3')">Click to add a Tweet</button> <!--Alternate class: w3-button w3-circle w3-teal-->
           <div class="card-body">
             <h5 class="card-title">Video games</h5>
                 <p class="card-text">I see amazing potential in video games as interactive narrative experiences in which the audience is uniquely engaged. I really enjoy this medium and I'm excited to see it continue to grow.</p>
