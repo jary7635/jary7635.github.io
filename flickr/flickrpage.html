@@ -1,0 +1,99 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        .img-container {
+          text-align: center;
+          display: block;
+        }
+        .card-img-top {
+          width: 100%;
+          height: 15vw;
+          object-fit: cover;
+        }
+      </style>
+    <title></title>
+  </head>
+  <body>
+    <!--Header/Navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href=../projects.html>Projects</a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href=../signup-modal/login.html>Sign Up Modal</a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href=../tic-tac-toe/tic-tac-toe.html>Tic-Tac-Toe Game</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href=flickrpage.html>Flickr API Gallery</a>
+                  </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <p>
+                        <a href="https://github.com/jary7635">
+                            <img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="Logo" style="width:40px;">
+                        </a>
+                    </p>
+                </li>
+            </ul>
+        </div>
+	</nav>
+
+    <div class="container">
+        <div class="card">
+            <div class="row justify-content-center">
+                <!--Dropdown to select number of images to load (30, 50, or 70)-->
+                <div class="my-auto dropdown" style="min-width:200px; min-height:30px;">
+                  <!--<label for="imageDropdown">Choose Number of Images:</label>-->
+                  <select name="imageDropdown" id="imageDropdown">
+                    <option value="" disabled selected>-- Number of Images --</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="70">70</option>
+                  </select>
+                </div>
+                <div class="my-auto form-group">
+                    <input class="form-control" id="tagBox" type="text" placeholder="Image tags:" style="width:400px;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="min-width:200px; min-height:20px;" onclick="makeAPIcall()">
+                    <a href="#" id="submitButton" class="btn" style="color:white;">Submit</a>
+                </button>
+            </div>
+        </div>
+
+        <!--Placeholder div for adding the images returned by Flickr-->
+        <div id="imageCards" class="row">
+          
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./script.js"></script>
+    <!--Generate More Images on Scrolling to the Bottom of the Page-->
+    <script>
+        $(window).scroll(function () {
+          if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+              console.log("End of page: generating more images");
+              makeAPIcall();
+              calledByScroll = true;
+          }
+        });
+    </script>
+  </body>
+</html>
